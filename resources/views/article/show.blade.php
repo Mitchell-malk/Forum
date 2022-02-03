@@ -7,6 +7,8 @@
     <title>文章详情</title>
 </head>
 <body>
-    我是文章详情页！！
+    <div class="container">
+
+    </div>
 </body>
 </html>
