@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeder;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 class ArticleTableSeeder extends Seeder
@@ -11,11 +13,11 @@ class ArticleTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1;$i <=5; $i++){
-            DB::table('articles')->insert([
-                ['id' => $i,'title' => str_random(10),'content' => str_random(10), 'user_id' => rand(1,15)]
-            ]);
-        }
+//        for ($i = 1;$i <=5; $i++){
+//            DB::table('articles')->insert([
+//                ['id' => $i,'title' => str_random(10),'content' => str_random(10), 'user_id' => rand(1,15)]
+//            ]);
+//        }
         DB::table('articles')->insert([
             [
                 'id' => '6',

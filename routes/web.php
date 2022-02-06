@@ -16,6 +16,10 @@ use App\Http\Controllers\ArticleController;
 // 文章模块
 // 文章论坛首页
 Route::get('/',[ArticleController::class,'index']);
+
+// 文章创建页
+Route::get('/create',[ArticleController::class,'create']);
+Route::post('/',[ArticleController::class,'store']);
 // 文章详情页
 Route::get('/{article}',[ArticleController::class,'show']);
 
