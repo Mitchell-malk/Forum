@@ -7,9 +7,6 @@
     {{--导航栏开始--}}
     @include('layout.navbar')
     {{--导航栏结束--}}
-    {{--轮播图开始--}}
-    @include('layout.lunbo')
-    {{-- 轮播图结束 --}}
     @yield('content')
 </div>
 {{-- 流体布局结束 --}}

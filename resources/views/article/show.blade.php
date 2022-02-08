@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-8">
             {{-- 文章标题开始 --}}
-            <p class="h2 text-center text-primary ">{{$article->title}}
+            <p class="h2 text-center text-primary">{{$article->title}}
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$article->created_at->toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>

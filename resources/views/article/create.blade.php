@@ -1,33 +1,28 @@
-@extends('layout.common')
+@extends('layout.common2')
 @section('content')
     {{--文章创建页表单开始--}}
     <div class="col-md-12">
         <form action="/" method="post">
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <label for="title" class="h5">标题:</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="请填写字段">
+                <input type="text" class="form-control" name="title" id="title" placeholder="请填写标题">
             </div>
-            <div class="form-group">
-                <label for="content" class="h5">内容:</label>
-                <textarea class="form-control" name="content" id="content" rows="10" placeholder="请填写内容" style="resize:none;"></textarea>
+
+            <div id="div1">
+                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
             </div>
+
+            <textarea class="form-control " name="content" id="laravelEditor" rows="10" style="display:none;"></textarea>
+            {{--富文本编辑器--}}
+            @include('layout.wangEditor')
+            {{--富文本编辑器结束--}}
+
             {{-- 验证格式开始 --}}
-            @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach()
-                </div>
-            @endif
+            @include('layout.error')
             {{-- 验证格式结束 --}}
             {{csrf_field()}}
-            <button type="submit" class="btn btn-success btn-md btn-block">提交</button>
+            <button type="submit" class="btn btn-success btn-md btn-block mt-3">提交</button>
         </form>
     </div>
-{{--    <script src="js/lib/jquery-1.10.2.min.js"></script>--}}
-    <script src="{{ URL::asset('/') }}js/jquery.js"></script>
-
-    <script src="js/wangEditor.min.js"></script>
-    <script src="js/larvael.Editor.js"></script>
     {{--文章创建页表单结束--}}
 @endsection

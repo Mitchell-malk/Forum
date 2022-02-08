@@ -13,14 +13,17 @@ class ArticleController extends Controller
         $datas = Article::orderBy('created_at','desc')->paginate(4);
         return view('article.index',compact('datas'));
     }
+
 //    文章详情
     public function show(Article $article){
         return view('article.show',compact('article'));
     }
+
 //    文章创建页面
     public function create(){
         return view('article.create');
     }
+
 //    文章创建页面数据处理
     public function store(Request $request){
 //      验证
@@ -31,5 +34,25 @@ class ArticleController extends Controller
         $data = request(['title','content']);
         Article::create($data);
         return redirect('/');
+    }
+
+//    上传图片
+    public function imageUpload(Request $request){
+        $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
+        $url = asset('storage/'.$path);
+        return json_encode(array(
+            "errno" => 0,
+            "url" => $url
+        ));
+    }
+
+//    上传视频
+    public function videoUpload(Request $request){
+        $path = $request -> file('videofileName') -> storePublicly(md5(time()));
+        $url = asset('storage/'.$path);
+        return json_encode(array(
+            "errno" => 0,
+            "url" => $url
+        ));
     }
 }

@@ -22,4 +22,7 @@ Route::get('/create',[ArticleController::class,'create']);
 Route::post('/',[ArticleController::class,'store']);
 // 文章详情页
 Route::get('/{article}',[ArticleController::class,'show']);
+Route::post('/image/upload',[ArticleController::class,'imageUpload']);
+
+
 
