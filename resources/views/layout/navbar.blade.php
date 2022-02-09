@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">首页<span class="sr-only"></span></a>
+                <a class="nav-link" href="/">首页<span class="sr-only"></span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">写文章</a>
+                <a class="nav-link" href="/create">写文章</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">通知</a>

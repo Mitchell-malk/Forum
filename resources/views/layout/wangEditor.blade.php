@@ -1,9 +1,9 @@
 {{--    <script src="js/lib/jquery-1.10.2.min.js"></script>--}}
-<script src="js/jquery.js"></script>
-<script src="js/wangEditor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"></script>
+<script src="{{URL::asset(__JS__.'/jquery.js')}}"></script>
+<script src="{{URL::asset(__JS__.'/wangEditor.min.js')}}"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js"></script>--}}
 <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-<script src="js/highlight.min.js"></script>
+{{--<script src="js/highlight.min.js"></script>--}}
 {{--2版本--}}
 {{--<script>
     let editor = new wangEditor('content');
@@ -22,7 +22,7 @@
     const editor = new E('#div1')
     // 设置编辑区高度为600px
     editor.config.height = 450
-    editor.config.placeholder = '自定义 placeholder 提示文字'
+    editor.config.placeholder = '尽情写作吧'
     editor.config.uploadHeaders = {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     };

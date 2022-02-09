@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>文章详情</title>
-</head>
 <body>
 @extends('layout.common')
 @section('content')
@@ -13,7 +5,15 @@
     <div class="row">
         <div class="col-md-8">
             {{-- 文章标题开始 --}}
-            <p class="h2 text-center text-primary">{{$article->title}}
+            <p class="h2 text-center text-primary">{{$article->title}}</p>
+            <p class="text-center">
+                <a href="/{{$article->id}}/edit">
+                    <i class="fa fa-pencil fa-fw"></i>
+                </a>
+                <a href="/{{$article->id}}/delete">
+                    <i class="fa fa-times fa-fw"></i>
+                </a>
+            </p>
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$article->created_at->toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
@@ -23,17 +23,17 @@
 
             {{-- 文章内容 --}}
             <blockquote class="blockquote text-left">
-                <p class="mb-0">&nbsp; &nbsp;&nbsp; &nbsp; {!! $article->content !!}</p>
+                <p class="mb-0">{!! $article->content !!}</p>
             </blockquote>
         </div>
         {{-- 文章内容结束 --}}
 
         {{-- 文章主体右部分 --}}
         <div class="col-md-4">
-            {{-- <div class="alert alert-success alert-info" role="alert">
-                <span class="font-weight-bold font-italic text-success">欢迎！</span>
-                <span class="text-primary">来到某某论坛！！！</span>
-            </div> --}}
+            {{--<div class="alert alert-success alert-info" role="alert">--}}
+                {{--<span class="font-weight-bold font-italic text-success">欢迎！</span>--}}
+                {{--<span class="text-primary">来到某某论坛！！！</span>--}}
+            {{--</div>--}}
             <div class="alert alert-secondary">
                 <div class="text-break">尽情写作吧!</div>
                 <span class="text-break">分享到：</span>
@@ -80,4 +80,3 @@
     {{-- 评论结束 --}}
 @endsection
 </body>
-</html>

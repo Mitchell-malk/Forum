@@ -11,23 +11,22 @@
     <div class="row">
         <div class="col-md-12">
             {{-- 文章标题开始 --}}
-            <p class="h2 text-center text-primary "><a href="{{$data->id}}" class="nav-link">{{$data->title}}</a>
+            <p class="h2 text-center text-primary "><a href="{{$data->id}}" class="nav-link">{{$data->title}}</a></p>
             <footer class="blockquote-footer text-center">时间：
-                <cite title="Source Title">&nbsp; &nbsp;&nbsp; &nbsp;{{$data->created_at -> toDatestring()}}</cite>
+                <cite title="Source Title">{{$data->created_at -> toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
                 <cite title="Source Title">LY</cite>
             </footer>
-            </p>
             {{-- 文章标题结束 --}}
             {{-- 文章内容 --}}
             <blockquote class="blockquote text-left">
                 <p class="mb-0">
-                    {!! Str::limit($data->content,'50','......') !!}
+                    {!! Str::limit($data->content,'200','......') !!}
                 </p>
             </blockquote>
         </div>
         {{-- 文章内容结束 --}}
-        <p class="text-center">赞评论</p>
+        <div class="text-center">赞评论</div>
     </div>
     {{-- 文章主体部分结束 --}}
    {{-- 文章主体右部分 --}}

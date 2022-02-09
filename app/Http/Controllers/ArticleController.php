@@ -28,16 +28,47 @@ class ArticleController extends Controller
     public function store(Request $request){
 //      验证
         $request -> validate([
-            'title' => 'required|min:4|max:20',
+            'title' => 'required|min:4|max:30',
             'content' => 'required|min:100|max:10000|'
         ]);
+//        逻辑处理
         $data = request(['title','content']);
         Article::create($data);
+//        页面渲染重定向
         return redirect('/');
     }
 
+//    文章编辑页
+    public function edit(Article $article){
+        return view('article.edit',compact('article'));
+    }
+
+//    文章编辑页逻辑处理
+    public function update(Article $article){
+//      验证
+        request() -> validate([
+            'title' => 'required|min:4|max:30',
+            'content' => 'required|min:100|max:10000|'
+        ]);
+//        逻辑处理
+        $article -> title = request('title');
+        $article -> content = request('content');
+        $article -> save();
+//        页面渲染重定向
+        return redirect("/$article->id");
+    }
+
+//    文章删除
+    public function delete(Article $article){
+//        逻辑处理
+        $article -> delete();
+//        页面渲染重定向
+        return redirect('/');
+    }
+
+
 //    上传图片
-    public function imageUpload(Request $request){
+/*    public function imageUpload(Request $request){
         $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
         $url = asset('storage/'.$path);
         return json_encode(array(
@@ -54,5 +85,5 @@ class ArticleController extends Controller
             "errno" => 0,
             "url" => $url
         ));
-    }
+    }*/
 }

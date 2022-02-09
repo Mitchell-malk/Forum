@@ -22,7 +22,16 @@ Route::get('/create',[ArticleController::class,'create']);
 Route::post('/',[ArticleController::class,'store']);
 // 文章详情页
 Route::get('/{article}',[ArticleController::class,'show']);
-Route::post('/image/upload',[ArticleController::class,'imageUpload']);
+
+//文章编辑页面
+Route::get('/{article}/edit',[ArticleController::class,'edit']);
+Route::put('/{article}',[ArticleController::class,'update']);
+// 文章删除页（物理删除）
+Route::get('/{article}/delete',[ArticleController::class,'delete']);
+
+// 图片、视频上传
+// Route::post('/image/upload',[ArticleController::class,'imageUpload']);
+// Route::post('/video/upload',[ArticleController::class,'videoUpload']);
 
 
 
