@@ -22,7 +22,6 @@
     const editor = new E('#div1')
     // 设置编辑区高度为600px
     editor.config.height = 450
-    editor.config.zindex = 5
     editor.config.placeholder = '尽情写作吧'
     editor.config.uploadHeaders = {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

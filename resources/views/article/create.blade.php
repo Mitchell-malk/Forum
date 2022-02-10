@@ -22,7 +22,7 @@
             @include('layout.error')
             {{-- 验证格式结束 --}}
             {{csrf_field()}}
-            <button type="submit" class="btn btn-success btn-md btn-block">提交</button>
+            <button type="submit" class="btn btn-success btn-md btn-block mt-3">提交</button>
         </form>
     </div>
     {{--文章创建页表单结束--}}
