@@ -1,4 +1,3 @@
-<body>
 @extends('layout.common')
 @section('content')
     {{-- 文章主题部分开始 --}}
@@ -7,17 +6,21 @@
             {{-- 文章标题开始 --}}
             <p class="h2 text-center text-primary">{{$article->title}}</p>
             <p class="text-center">
+                @can('update',$article)
                 <a href="/{{$article->id}}/edit">
                     <i class="fa fa-pencil fa-fw"></i>
                 </a>
+                @endcan
+                @can('delete',$article)
                 <a href="/{{$article->id}}/delete">
                     <i class="fa fa-times fa-fw"></i>
                 </a>
+                @endcan
             </p>
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$article->created_at->toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
-                <cite title="Source Title">LY</cite>
+                <cite title="Source Title">{{$article->gl_au->name}}</cite>
             </footer>
             {{-- 文章标题结束 --}}
 
@@ -79,4 +82,3 @@
     </div>
     {{-- 评论结束 --}}
 @endsection
-</body>

@@ -20,7 +20,7 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6|max:16',
-            'is_remember' => 'integer'
+            'is_remember' => 'alpha_num'
         ]);
         // 逻辑
         $user = request(['email','password']);

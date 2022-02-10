@@ -32,9 +32,11 @@ class Article extends Model
     use HasFactory;
     protected $table = 'articles';
 
-    protected $fillable = ['title','content','user_id
+    protected $fillable = ['title','content','user_id'];
 
-
-
-    '];
+    // 用户和模型关联
+     public function gl_au()
+    {
+        return $this->belongsTo('App\Models\User','user_id','id');
+    }
 }

@@ -15,7 +15,7 @@
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$data->created_at -> toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
-                <cite title="Source Title">LY</cite>
+                <cite title="Source Title">{{$data->gl_au->name}}</cite>
             </footer>
             {{-- 文章标题结束 --}}
             {{-- 文章内容 --}}

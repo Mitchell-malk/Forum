@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Auth;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -32,8 +33,11 @@ class ArticleController extends Controller
             'content' => 'required|min:100|max:10000|'
         ]);
 //        逻辑处理
+        $user_id = Auth::user()->id;
         $data = request(['title','content']);
-        Article::create($data);
+//        合并数组
+        $data1 = array_merge(compact('user_id'),$data);
+        Article::create($data1);
 //        页面渲染重定向
         return redirect('/');
     }
@@ -43,13 +47,19 @@ class ArticleController extends Controller
         return view('article.edit',compact('article'));
     }
 
-//    文章编辑页逻辑处理
+    /**
+     * 文章编辑页逻辑处理
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update(Article $article){
 //      验证
         request() -> validate([
             'title' => 'required|min:4|max:30',
             'content' => 'required|min:100|max:10000|'
         ]);
+//        策略
+        $this->authorize('update',$article);
 //        逻辑处理
         $article -> title = request('title');
         $article -> content = request('content');
@@ -58,8 +68,14 @@ class ArticleController extends Controller
         return redirect("/$article->id");
     }
 
-//    文章删除
+    /**
+     * 文章删除
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function delete(Article $article){
+//        策略
+        $this->authorize('delete',$article);
 //        逻辑处理
         $article -> delete();
 //        页面渲染重定向
