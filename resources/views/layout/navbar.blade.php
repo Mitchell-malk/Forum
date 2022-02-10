@@ -21,16 +21,38 @@
         </ul>
         <form class="form-inline mx-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="搜索文章" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search fa-fw"></i></button>
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search fa-fw"></i>
+            </button>
         </form>
+        {{-- 导航右侧部分 --}}
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">登录</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">注册</a>
-            </li>
+            @if (Session::has('status'))
+                {{-- 下拉菜单开始 --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{session('status')}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">个人中心</a>
+                        <a class="dropdown-item" href="#">设置</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">退出</a>
+                    </div>
+                </li>
+                {{-- 下拉菜单结束 --}}
+            @else
+                {{-- 登录注册功能开始 --}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">登录</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/register">注册</a>
+                </li>
+                {{-- 登录注册功能结束 --}}
+            @endif
         </ul>
+       {{-- 导航右侧部分结束 --}}
     </div>
 </nav>
 {{--导航栏结束--}}
