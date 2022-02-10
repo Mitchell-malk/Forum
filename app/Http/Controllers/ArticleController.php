@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Comment;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -102,4 +103,21 @@ class ArticleController extends Controller
             "url" => $url
         ));
     }*/
+
+
+//     评论
+    public function comment(Article $article)
+    {
+//        验证
+        request() -> validate([
+            'comment' => 'required|min:4|max:300'
+        ]);
+//        逻辑
+        $comment = new Comment();
+        $comment->user_id = Auth::id();
+        $comment->comment = \request('comment');
+        $article->gl_ac()->save($comment);
+//        渲染
+        return back();
+    }
 }

@@ -49,7 +49,5 @@ Route::get('/{article}/delete',[ArticleController::class,'delete']);
 // Route::post('/image/upload',[ArticleController::class,'imageUpload']);
 // Route::post('/video/upload',[ArticleController::class,'videoUpload']);
 
-
-
-
-
+// 评论模块
+Route::post('/{article}/comment',[ArticleController::class,'comment']);

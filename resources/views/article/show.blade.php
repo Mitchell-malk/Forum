@@ -7,14 +7,14 @@
             <p class="h2 text-center text-primary">{{$article->title}}</p>
             <p class="text-center">
                 @can('update',$article)
-                <a href="/{{$article->id}}/edit">
-                    <i class="fa fa-pencil fa-fw"></i>
-                </a>
+                    <a href="/{{$article->id}}/edit">
+                        <i class="fa fa-pencil fa-fw"></i>
+                    </a>
                 @endcan
                 @can('delete',$article)
-                <a href="/{{$article->id}}/delete">
-                    <i class="fa fa-times fa-fw"></i>
-                </a>
+                    <a href="/{{$article->id}}/delete">
+                        <i class="fa fa-times fa-fw"></i>
+                    </a>
                 @endcan
             </p>
             <footer class="blockquote-footer text-center">时间：
@@ -34,8 +34,8 @@
         {{-- 文章主体右部分 --}}
         <div class="col-md-4">
             {{--<div class="alert alert-success alert-info" role="alert">--}}
-                {{--<span class="font-weight-bold font-italic text-success">欢迎！</span>--}}
-                {{--<span class="text-primary">来到某某论坛！！！</span>--}}
+            {{--<span class="font-weight-bold font-italic text-success">欢迎！</span>--}}
+            {{--<span class="text-primary">来到某某论坛！！！</span>--}}
             {{--</div>--}}
             <div class="alert alert-secondary">
                 <div class="text-break">尽情写作吧!</div>
@@ -55,23 +55,38 @@
     <div class="row">
         <div class="col-md-12">
             <nav id="navbar-example2" class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">评论:</a>
-                <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-thumbs-o-up fa-1x"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-thumbs-o-down fa-1x"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-heart-o fa-1x"></i></a>
-                    </li>
-                </ul>
+                {{-- 评论区开始 --}}
+                <div class="navbar-brand col-md-12">评论:</div>
+                @foreach($article->gl_ac as $comment)
+                    <blockquote class="blockquote">
+                        <p class="h5 text-black-50"><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$comment->comment}}</em></p>
+                        <footer class="blockquote-footer text-right ">时间：
+                            <cite title="Source Title">{{$comment->created_at->toDatestring()}}</cite>
+                            <cite title="Source Title">作者：</cite>
+                            <cite title="Source Title">{{$comment->gl_cu->name}}</cite>
+                        </footer>
+                    </blockquote>
+                    <ul class="nav nav-pills justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-thumbs-o-up fa-fw"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-thumbs-o-down fa-fw"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-heart-o fa-fw"></i></a>
+                        </li>
+                    </ul>
+                @endforeach
+                {{-- 评论区结束 --}}
             </nav>
             <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-                <form class="form-group mt-3">
+                <form class="form-group mt-3" action="/{{$article->id}}/comment" method="post">
                     <label for="exampleFormControlTextarea1" class="h5">发表评论:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" style="resize:none;"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="comment"
+                              style="resize:none;"></textarea>
+                    {{csrf_field()}}
+                    @include('layout.error')
                     <div style="text-align:center">
                         <button class="btn btn-outline-success mt-2 btn-sm" type="submit">发表评论</button>
                         <input class="btn btn-outline-danger mt-2 btn-sm" type="reset" value="重置评论">

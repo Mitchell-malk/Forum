@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User|null $gl_au
  */
 class Article extends Model
 {
@@ -34,9 +35,15 @@ class Article extends Model
 
     protected $fillable = ['title','content','user_id'];
 
-    // 用户和模型关联
+    // 用户和文章模型关联
      public function gl_au()
     {
         return $this->belongsTo('App\Models\User','user_id','id');
+    }
+
+    // 文章和评论模型关联
+    public function gl_ac()
+    {
+        return $this->hasMany('App\Models\Comment')->orderBy('created_at','desc');
     }
 }
