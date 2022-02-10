@@ -13,6 +13,22 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+
+
+// 用户模块
+// 用户注册
+Route::get('/register',[RegisterController::class,'index']);
+// 注册行为
+Route::post('register',[RegisterController::class,'register']);
+// 登录页面
+Route::get('/login',[LoginController::class,'index']);
+// 登录行为
+Route::post('/login',[LoginController::class,'login']);
+// 登出行为
+Route::get('/logout',[LoginController::class,'logout']);
+
 // 文章模块
 // 文章论坛首页
 Route::get('/',[ArticleController::class,'index']);
@@ -32,6 +48,8 @@ Route::get('/{article}/delete',[ArticleController::class,'delete']);
 // 图片、视频上传
 // Route::post('/image/upload',[ArticleController::class,'imageUpload']);
 // Route::post('/video/upload',[ArticleController::class,'videoUpload']);
+
+
 
 
 

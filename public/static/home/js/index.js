@@ -75,4 +75,18 @@ $(function(){
             color:'white'
         })
     })
+    // //自动播放
+    // var dhq = setInterval(function(){
+    //     $('.l').click()
+    // },2000)
+    // //停止播放
+    // $('.lb').on('mouseover',function(){
+    //     clearInterval(dhq)
+    // })
+    // //从新播放
+    // $('.lb').on('mouseout',function(){
+    //     dhq = setInterval(function(){
+    //         $('.l').click()
+    //     },1500)
+    // })
 })
