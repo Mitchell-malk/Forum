@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer('article_id')->default(0);
             $table->integer('user_id')->default(0);
             $table->text('comment');
-            $table->timestamp('created-at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
