@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             {{-- 文章标题开始 --}}
-            <p class="h2 text-center text-primary "><a href="{{$data->id}}" class="nav-link">{{$data->title}}</a></p>
+            <p class="h2 text-center"><a href="{{$data->id}}" class="nav-link text-success">{{$data->title}}</a></p>
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$data->created_at -> toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
@@ -26,11 +26,11 @@
             </blockquote>
         </div>
         {{-- 文章内容结束 --}}
-        <div class="text-center">赞评论</div>
+        <span class="text-center">赞 <i></i> 评论</span>
     </div>
     {{-- 文章主体部分结束 --}}
    {{-- 文章主体右部分 --}}
-{{--   <div class="col-md-4">
+ {{--  <div class="col-md-4">
     <div class="alert alert-secondary">
         <div class="text-break">尽情写作吧!</div>
         <span class="text-break">分享到：</span>
@@ -40,12 +40,12 @@
         <a href="#"><i class="fa fa-twitter fa-fw"></i></a>
         <a href="#"><i class="fa fa-facebook-f fa-fw"></i></a>
     </div>
-</div>--}}
+</div> --}}
 {{-- 文章主体右部分结束 --}}
 @endforeach
-<div class="page-header">
-    {{--分页按钮--}}
-    {{$datas->links()}}
-    {{-- 分页按钮结束 --}}
-</div>
+    <div class="Page">
+        {{--分页按钮--}}
+        {{$datas->links()}}
+        {{-- 分页按钮结束 --}}
+    </div>
 @endsection
