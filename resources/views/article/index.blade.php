@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             {{-- 文章标题开始 --}}
-            <p class="h2 text-center"><a href="{{$data->id}}" class="nav-link text-success">{{$data->title}}</a></p>
+            <p class="h2 text-center"><a href="{{$data->id}}" class="nav-link text-success h3">{{$data->title}}</a></p>
             <footer class="blockquote-footer text-center">时间：
                 <cite title="Source Title">{{$data->created_at -> toDatestring()}}</cite>
                 <cite title="Source Title">作者：</cite>
@@ -19,14 +19,12 @@
             </footer>
             {{-- 文章标题结束 --}}
             {{-- 文章内容 --}}
-            <blockquote class="blockquote text-left">
-                <p class="mb-0">
-                    {!! Str::limit($data->content,'200','......') !!}
-                </p>
+            <blockquote class="blockquote text-left h6">
+                <p class="mb-0">{!! Str::limit($data->content,'100','......') !!}</p>
             </blockquote>
         </div>
         {{-- 文章内容结束 --}}
-        <span class="text-center">赞 <i></i> 评论</span>
+        <span class="text-center">赞：{{$data->zans_count}}<i class="ml-3"></i> 评论:{{$data->gl_ac_count}}</span>
     </div>
     {{-- 文章主体部分结束 --}}
    {{-- 文章主体右部分 --}}

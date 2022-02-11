@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUserId($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User|null $gl_au
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $gl_ac
+ * @property-read int|null $gl_ac_count
  */
 class Article extends Model
 {
@@ -45,5 +47,15 @@ class Article extends Model
     public function gl_ac()
     {
         return $this->hasMany('App\Models\Comment')->orderBy('created_at','desc');
+    }
+
+    // 关联文章和赞模型，判断此文章是否被用户赞过
+    public function zan($user_id){
+         return $this->hasOne(Zan::class)->where('user_id',$user_id);
+    }
+
+    // 获取点赞文章的赞模型
+    public function zans(){
+         return $this->hasMany(Zan::class);
     }
 }

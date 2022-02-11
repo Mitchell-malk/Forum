@@ -18,7 +18,7 @@ class CreateZansTable extends Migration
             $table->increments('id');
             $table->integer('article_id')->default(0);
             $table->integer('user_id')->default(0);
-            $table->text('zan')->default('');
+            $table->text('zan')->default(null);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });

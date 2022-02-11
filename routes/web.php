@@ -50,4 +50,9 @@ Route::get('/{article}/delete',[ArticleController::class,'delete']);
 // Route::post('/video/upload',[ArticleController::class,'videoUpload']);
 
 // 评论模块
+// 评论块
 Route::post('/{article}/comment',[ArticleController::class,'comment']);
+// 点赞和取消赞
+Route::get('/{article}/zan',[ArticleController::class,'zan']);
+Route::get('/{article}/unzan',[ArticleController::class,'unzan']);
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Zan;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -12,12 +13,13 @@ class ArticleController extends Controller
 //    文章论坛首页
     public function index(){
 //        文章分页数据
-        $datas = Article::orderBy('created_at','desc')->paginate(4);
+        $datas = Article::orderBy('created_at','desc')->withCount(['gl_ac','zans'])->paginate(4);
         return view('article.index',compact('datas'));
     }
 
 //    文章详情
     public function show(Article $article){
+        $article->load('gl_ac');
         return view('article.show',compact('article'));
     }
 
@@ -110,7 +112,7 @@ class ArticleController extends Controller
     {
 //        验证
         request() -> validate([
-            'comment' => 'required|min:4|max:300'
+            'comment' => 'required|min:4|max:200'
         ]);
 //        逻辑
         $comment = new Comment();
@@ -118,6 +120,19 @@ class ArticleController extends Controller
         $comment->comment = \request('comment');
         $article->gl_ac()->save($comment);
 //        渲染
+        return back();
+    }
+
+//    赞
+    public function zan(Article $article){
+        $param = ['user_id' =>Auth::id(), 'article_id' => $article->id];
+        Zan::firstOrCreate($param);
+        return back();
+    }
+
+//    取消赞
+    public function unzan(Article $article){
+        $article->zan(Auth::id())->delete();
         return back();
     }
 }
