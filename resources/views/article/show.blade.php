@@ -75,9 +75,9 @@
     {{-- 评论开始 --}}
     <div class="row">
         <div class="col-md-12">
-            <nav id="navbar-example2" class="navbar navbar-light">
+            <nav id="navbar-example2" class="navbar navbar-light bg-light">
                 {{-- 评论区开始 --}}
-                <div class="navbar-brand col-md-12">评论:</div>
+                <div class="navbar-brand col-md-12 ">评论:</div>
                 @foreach($article->gl_ac as $comment)
                     {{-- <blockquote class="blockquote col-md-12">
                         <footer class="blockquote-footer text-left ">时间：
@@ -88,7 +88,7 @@
                         <p class="h5 text-black-50"><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$comment->comment}}</em></p>
                     </blockquote> --}}
                     <ul class="list-group col-md-12">
-                        <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between">
                             <em class="col-md-9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$comment->comment}}</em>
                             <span
                                 class="badge badge-pill col-md-3">时间：{{$comment->created_at->toDatestring()}}作者:{{$comment->gl_cu->name}}</span>
