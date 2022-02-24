@@ -14,7 +14,7 @@ class CreateFensTable extends Migration
      */
     public function up()
     {
-        Schema::create('fens', function (Blueprint $table) {
+        Schema::create('fans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('fan_id'); // 粉丝ID
             $table->integer('star_id'); // 被粉的明星ID
