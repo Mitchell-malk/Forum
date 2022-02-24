@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use function Symfony\Component\String\u;
+use function Symfony\Component\Translation\t;
 
 /**
  * App\Models\User
@@ -75,4 +77,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // 用户和文章
+    public function articles(){
+        return $this->hasMany(Article::class,'user_id',"id");
+    }
+
+    // 粉丝
+    public function fans(){
+        return $this->hasMany(Fan::class,'star_id','id');
+    }
+
+    // 我的明星，粉丝
+    public function stars(){
+        return $this->hasMany(Fan::class,'fan_id','id');
+    }
+
+    // 关注某人
+    public function dofan($uid){
+        $fan = new Fan();
+        $fan->star_id = $uid;
+        return $this->stars()->save($fan);
+    }
+
+    // 取消关注
+    public function dounfan($uid){
+        $fan = new Fan();
+        $fan->star_id = $uid;
+        return $this->stars()->delete($fan);
+    }
+
+    // 当前用户是否被Uid关注
+    public function hasFan($uid){
+        return $this->fans()->where('fan_id',$uid)->count();
+    }
+
+    // 单签用户是否关注Uid
+    public function hasStar($uid){
+        return $this->fans()->where('star_id',$uid)->count();
+    }
 }

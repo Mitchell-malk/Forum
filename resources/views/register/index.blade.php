@@ -61,7 +61,7 @@
                             </label>
                         </div>
                         <div class="col-2 text-right">
-                            <a href="" class="col-form-label-sm nav-link">返回首页</a>
+                            <a href="/" class="col-form-label-sm nav-link">返回首页</a>
                         </div>
                     </div>
                    {{-- csrf保护 --}}

@@ -13,6 +13,6 @@
 {{--    <link rel="stylesheet" href="css/wangEditor.min.css">--}}
     <script src="{{ URL::asset(__JS__.'/jquery.js') }}"></script>
     <script src="{{ URL::asset(__JS__.'/jquery.min1.js') }}"></script>
-    <script src="{{URL::asset(__JS__.'/bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset(__JS__.'/index.js')}}"></script>
+    <script src="{{ URL::asset(__JS__.'/bootstrap.min.js')}}"></script>
+    <script src="{{ URL::asset(__JS__.'/index.js')}}"></script>
 </head>

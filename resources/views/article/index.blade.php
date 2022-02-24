@@ -24,7 +24,7 @@
             </blockquote>
         </div>
         {{-- 文章内容结束 --}}
-        <span class="text-center">赞：{{$data->zans_count}}<i class="ml-3"></i> 评论:{{$data->gl_ac_count}}</span>
+        <p class="text-center">赞：{{$data->zans_count}}<i class="ml-3"></i> 评论:{{$data->gl_ac_count}}</p>
     </div>
     {{-- 文章主体部分结束 --}}
    {{-- 文章主体右部分 --}}

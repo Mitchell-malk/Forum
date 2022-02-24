@@ -7,8 +7,8 @@
             <!--添加用户UI-->
             <form action="/login" method="post"  class="col-md-12">
                 <fieldset class="w-75">
-                     <!--邮件-->
-                     <div class="form-group row">
+                    <!--邮件-->
+                    <div class="form-group row">
                         <label for="email" class="col-2 col-form-label">邮箱:</label>
                         <div class="col-8">
                             <input type="email" id="email" name="email" placeholder="请输入邮箱" class="form-control">
@@ -31,11 +31,11 @@
                             </label>
                         </div>
                     </div>
-                   {{-- csrf保护 --}}
+                    {{-- csrf保护 --}}
                     {{csrf_field()}}
                     {{-- 验证 --}}
                     <div>@include('layout.error')</div>
-                     <!--提交按钮-->
+                    <!--提交按钮-->
                     <div class="form-group row">
                         <label class="col-2 col-form-label"></label>
                         <div class="col-8">

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\UserController;
 
 // 用户模块
 // 用户注册
@@ -28,6 +28,7 @@ Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'login']);
 // 登出行为
 Route::get('/logout',[LoginController::class,'logout']);
+
 
 // 文章模块
 // 文章论坛首页
@@ -56,3 +57,11 @@ Route::post('/{article}/comment',[ArticleController::class,'comment']);
 Route::get('/{article}/zan',[ArticleController::class,'zan']);
 Route::get('/{article}/unzan',[ArticleController::class,'unzan']);
 
+// 用户模块
+// 个人设置
+Route::get('/user/me/setting',[UserController::class,'setting']);
+Route::post('/user/{user}/setting',[UserController::class,'settingStore']);
+// 个人中心
+Route::get('/user/{user}',[UserController::class,'show']);
+Route::post('/user/{user}/fan',[UserController::class,'fan']);
+Route::post('/user/{user}/unfan',[UserController::class,'unfan']);

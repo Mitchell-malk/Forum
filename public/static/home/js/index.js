@@ -87,6 +87,6 @@ $(function(){
     // $('.lb').on('mouseout',function(){
     //     dhq = setInterval(function(){
     //         $('.l').click()
-    //     },1000)
+    //     },2000)
     // })
 })

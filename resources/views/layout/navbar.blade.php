@@ -31,11 +31,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{session('status')}}
+                        <img src="{{Auth::user()->avatar}}" class="rounded-circle" width="30px" height="30px">
+                        {{Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">个人中心</a>
-                        <a class="dropdown-item" href="#">设置</a>
+                        <a class="dropdown-item" href="/user/{{Auth::user()->id}}">个人中心</a>
+                        <a class="dropdown-item" href="/user/me/setting">设置</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout">退出</a>
                     </div>
