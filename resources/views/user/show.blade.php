@@ -36,7 +36,6 @@
                 @endforeach
                 {{$articles->links()}}
             </div>
-
             {{--关注内容--}}
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 @foreach($susers as $suser)

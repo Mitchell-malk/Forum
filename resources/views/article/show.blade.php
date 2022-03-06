@@ -71,12 +71,10 @@
         {{-- 文章主体右部分结束 --}}
     </div>
     {{-- 文章主体部分结束 --}}
-
     {{-- 评论开始 --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <nav id="navbar-example2" class="navbar navbar-light bg-light">
-                {{-- 评论区开始 --}}
                 <div class="navbar-brand col-md-12 ">评论:</div>
                 @foreach($article->gl_ac as $comment)
                     <ul class="list-group col-md-12">
@@ -87,7 +85,6 @@
                         </li>
                     </ul>
                 @endforeach
-                {{-- 评论区结束 --}}
             </nav>
             <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
                 <form class="form-group mt-3" action="/{{$article->id}}/comment" method="post">
@@ -103,6 +100,18 @@
                 </form>
             </div>
         </div>
-    </div>
-    {{-- 评论结束 --}}
+    </div> --}}
+    <div id="gitalk-container"></div>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: 'aa2376e004f23b076920',
+            clientSecret: '622cd8dfe7c03a8442796f6f50b6a0370d46109c',
+            repo: 'luntan',
+            owner: 'Mitchell-malk',
+            admin: ['Mitchell-malk'],
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
 @endsection

@@ -15,4 +15,6 @@
     <script src="{{ URL::asset(__JS__.'/jquery.min1.js') }}"></script>
     <script src="{{ URL::asset(__JS__.'/bootstrap.min.js')}}"></script>
     <script src="{{ URL::asset(__JS__.'/index.js')}}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
