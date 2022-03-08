@@ -45,7 +45,7 @@
                         </p>
                         <p>关注：{{$suser->stars_count}} | 粉丝：{{$suser->fans_count}} | 文章：{{$suser->articles_count}}</p>
                     </div>
-                    <a href="" class="btn btn-default">取消关注</a>
+                    <a href="" class="btn btn-light">取消关注</a>
                 @endforeach
             </div>
             {{--粉丝内容--}}
@@ -57,7 +57,7 @@
                         </p>
                         <p>关注：{{$fuser->stars_count}} | 粉丝：{{$fuser->fans_count}} | 文章：{{$fuser->articles_count}}</p>
                     </div>
-                    <a href="" class="btn btn-default">取消关注</a>
+                    <a href="" class="btn btn-light">取消关注</a>
                 @endforeach
             </div>
             {{--导航分页结束--}}

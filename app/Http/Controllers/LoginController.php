@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\User;
 
 class LoginController extends Controller
 {
@@ -20,15 +19,16 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6|max:16',
-            'is_remember' => 'alpha_num'
+            'is_remember' => 'alpha_num',
+            'captcha' => 'required|captcha',
         ]);
         // 逻辑
-        $user = request(['email','password']);
+        $user = request(['email', 'password']);
         $remember = request('is_remember');
-        if (\Auth::attempt($user,$remember)){
+        if (\Auth::attempt($user, $remember)) {
             $email = request('email');
             // 存储session变量及它的值
-            $request->session()->put('status',$email);
+            $request->session()->put('status', $email);
             return redirect('/');
         }
         // 渲染

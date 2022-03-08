@@ -8,12 +8,12 @@
             <p class="text-center">
                 @can('update',$article)
                     <a href="/{{$article->id}}/edit">
-                        <i class="fa fa-pencil fa-fw"></i>
+                        <i class="fa fa-pencil fa-fw text-success"></i>
                     </a>
                 @endcan
                 @can('delete',$article)
                     <a href="/{{$article->id}}/delete">
-                        <i class="fa fa-times fa-fw"></i>
+                        <i class="fa fa-times fa-fw text-danger"></i>
                     </a>
                 @endcan
             </p>
@@ -110,7 +110,8 @@
             owner: 'Mitchell-malk',
             admin: ['Mitchell-malk'],
             id: location.pathname,      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
+            distractionFreeMode: false,  // Facebook-like distraction free mode
+            perPage: 5,
         })
         gitalk.render('gitalk-container')
     </script>

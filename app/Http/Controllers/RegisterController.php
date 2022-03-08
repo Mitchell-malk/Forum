@@ -18,7 +18,10 @@ class RegisterController extends Controller
         $request -> validate([
             'email' => 'required|unique:users,email|email',
             'password' => 'required|min:6|max:16|confirmed',
-            'agree' => 'accepted'
+            'agree' => 'accepted',
+            'captcha' => ['required', 'captcha'],[
+              'captcha.captcha'=>'请输入正确的验证码'
+            ],
         ]);
         // 逻辑
         $email = request('email');
